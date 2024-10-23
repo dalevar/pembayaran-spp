@@ -2,9 +2,6 @@
 
 @section('content')
 <div class="card">
-  <div class="card-header">
-    <h4 class="card-title">{{ $title }}</h4>
-  </div>
   <div class="card-body">
     <a href="{{ route('admin.majors.create') }}" class="btn btn-md btn-primary">Tambah Data</a>
 
