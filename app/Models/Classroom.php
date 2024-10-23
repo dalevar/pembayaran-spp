@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Major extends Model
+class Classroom extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'name'
+        'name',
+        'major_id'
     ];
 
-    public function classrooms()
+    public function major()
     {
-        return $this->hasMany(Classroom::class);
+        return $this->belongsTo(Major::class);
     }
 }

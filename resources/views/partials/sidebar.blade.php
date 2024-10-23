@@ -56,14 +56,14 @@
           <span>Jurusan</span>
         </a>
       </li>
-      <li class="sidebar-item">
-        <a href="#" class='sidebar-link'>
+      <li class="sidebar-item {{ request()->routeIs('admin.classrooms.*') ? 'active' : '' }}">
+        <a href="{{ route('admin.classrooms.index') }}" class='sidebar-link'>
           <i class="bi bi-door-closed-fill"></i>
           <span>Kelas</span>
         </a>
       </li>
       <li class="sidebar-item {{ request()->routeIs('admin.academic_years.*') ? 'active' : '' }}">
-        <a href="{{ route('admin.academic_years.index') }}" class="sidebar-link">
+        <a href="{{ route('admin.academic_years.index') }}" class='sidebar-link'>
           <i class="bi bi-calendar-date-fill"></i>
           <span>Tahun Ajaran</span>
         </a>

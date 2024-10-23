@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AcademicYearController;
+use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\MajorController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('majors', MajorController::class);
     Route::resource('/academic_years', AcademicYearController::class);
+    Route::resource('/classrooms', ClassroomController::class);
 });
 
