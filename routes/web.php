@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\ClassroomController;
 use App\Http\Controllers\Admin\MajorController;
+use App\Http\Controllers\Admin\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,5 +28,6 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::resource('majors', MajorController::class);
     Route::resource('/academic_years', AcademicYearController::class);
     Route::resource('/classrooms', ClassroomController::class);
+    Route::resource('/students', StudentController::class);
 });
 

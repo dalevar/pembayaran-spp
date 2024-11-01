@@ -68,6 +68,12 @@
           <span>Tahun Ajaran</span>
         </a>
       </li>
+      <li class="sidebar-item {{ request()->routeIs('admin.students.*') ? 'active' : '' }}">
+        <a href="{{ route('admin.students.index') }}" class='sidebar-link'>
+          <i class="bi bi-people-fill"></i>
+          <span>Siswa</span>
+        </a>
+      </li>
 
       <li class="sidebar-title">Akun</li>
         
