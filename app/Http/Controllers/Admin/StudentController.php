@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StudentRequest;
+use App\Http\Requests\Students\StoreStudentRequest;
+use App\Http\Requests\Students\UpdateStudentRequest;
 use App\Models\Major;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StudentRequest $request)
+    public function store(StoreStudentRequest $request)
     {
         $validate = $request->validated();
 
@@ -76,7 +77,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StudentRequest $request, Student $student)
+    public function update(UpdateStudentRequest $request, Student $student)
     {
         $validate = $request->validated();
 

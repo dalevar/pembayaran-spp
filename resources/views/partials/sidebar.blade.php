@@ -75,6 +75,13 @@
         </a>
       </li>
 
+      <li class="sidebar-item {{ request()->routeIs('admin.assign.*') ? 'active' : '' }}">
+        <a href="{{ route('admin.assign.index') }}" class='sidebar-link'>
+          <i class="bi bi-person-lines-fill"></i>
+          <span>Riwayat Kelas</span>
+        </a>
+      </li>
+
       <li class="sidebar-title">Akun</li>
         
       <li class="sidebar-item">

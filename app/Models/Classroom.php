@@ -15,8 +15,22 @@ class Classroom extends Model
         'major_id'
     ];
 
+    public function scopeSearchMajor($query, $major_id = '')
+    {
+        return $query->when($major_id, function ($query, $id) {
+            return $query->where('major_id', $id);
+        });
+    }
+
     public function major()
     {
         return $this->belongsTo(Major::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'class_student')
+                    ->withPivot('academic_year_id')
+                    ->withTimestamps();
     }
 }

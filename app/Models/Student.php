@@ -18,9 +18,19 @@ class Student extends Model
         'major_id'
     ];
 
-    public function scopeSearchMajor($query, $major_id = '')
+    public function scopeFilter($query, $majorId = "", $classId = "")
     {
-        return $query->where('major_id', $major_id);
+        if ($classId) {
+            $query->whereHas('classes', function ($query) use ($classId) {
+                $query->where('classroom_id', $classId);
+            });
+        }
+
+        if ($majorId) {
+            $query->where('major_id', $majorId);
+        }
+
+        return $query;
     }
 
     public function scopeStatus($query)
@@ -31,5 +41,12 @@ class Student extends Model
     public function major()
     {
         return $this->belongsTo(Major::class);
+    }
+
+    public function classes()
+    {
+        return $this->belongsToMany(Classroom::class, 'class_student')
+                    ->withPivot('academic_year_id')
+                    ->withTimestamps();
     }
 }
