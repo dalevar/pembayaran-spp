@@ -18,9 +18,7 @@ class StudentController extends Controller
     {
         $title = 'Siswa';
         $majors = Major::all();
-        $students = Student::with('major')->when($request->major_id, function ($query) use ($request) {
-            return $query->searchMajor($request->major_id);
-        })->status()->paginate(10);
+        $students = Student::with('major')->filter($request->major)->status()->paginate(10);
         return view('admin.students.index', [
             'title' => $title,
             'majors' => $majors,
@@ -45,7 +43,7 @@ class StudentController extends Controller
     public function store(StoreStudentRequest $request)
     {
         $validate = $request->validated();
-
+        $validate['year'] = date('Y');
         Student::create($validate);
 
         return to_route('admin.students.index')->with('success', 'Data siswa berhasil disimpan');

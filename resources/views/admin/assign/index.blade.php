@@ -61,5 +61,9 @@
       </tbody>
     </table>
   </div>
+
+  <div class="mx-3">
+    {{ $students->links() }}
+  </div>
 </div>
 @endsection

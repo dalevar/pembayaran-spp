@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('address');
             $table->enum('gender', ['L', 'P']);
             $table->string('parents');
+            $table->string('year');
             $table->foreignIdFor(Major::class);
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();

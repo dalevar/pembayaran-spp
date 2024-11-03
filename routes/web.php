@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AcademicYearController;
 use App\Http\Controllers\Admin\ClassroomController;
+use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\StudentAssignmentController;
 use App\Http\Controllers\Admin\StudentController;
@@ -25,7 +26,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('home', [HomeController::class, 'index'])->name('home');
     Route::resource('majors', MajorController::class);
     Route::resource('academic_years', AcademicYearController::class);
     Route::resource('classrooms', ClassroomController::class);

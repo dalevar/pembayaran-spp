@@ -16,12 +16,14 @@ class StudentAssignmentController extends Controller
         // Ambil data jurusan
         $majors = Major::all();
 
-        $classrooms = Classroom::searchMajor($request->major)->get();
+        $classrooms = Classroom::with('major')->searchMajor($request->major)->get();
+        $students = [];
 
         // Ambil data siswa berdasarkan kelas dan request jurusan
-        $students = Student::filter($request->major, $request->classroom)->with('major')->with(['classes' => function ($query) {
-            $query->withPivot('academic_year_id');
-        }])->paginate(10);
+        $students = Student::filter($request->major, $request->classroom)
+            ->status()
+            ->with('major')
+            ->with('classes')->paginate(15)->withQueryString();
 
         return view('admin.assign.index', [
             'title' => 'Riwayat Kelas',

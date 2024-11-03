@@ -10,7 +10,7 @@
       <div class="col">
         <form action="{{ route('admin.students.index') }}" method="GET">
           <div class="form-group">
-            <select name="major_id" id="major_id" class="form-select" onchange="this.form.submit()">
+            <select name="major" id="major_id" class="form-select" onchange="this.form.submit()">
               <option value="">Pilih Jurusan</option>
               @foreach ($majors as $item)
                 <option value="{{ $item->id }}" {{ request('major_id') == $item->id ? 'selected' : '' }}>
