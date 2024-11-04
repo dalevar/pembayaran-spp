@@ -3,25 +3,33 @@
 @section('content')
 <div class="card">
   <div class="card-body">
-    <div class="row">
-      <div class="col ">
-        <a href="{{ route('admin.students.create') }}" class="btn btn-md btn-primary">Tambah Data</a>
-      </div>
-      <div class="col">
-        <form action="{{ route('admin.students.index') }}" method="GET">
+    <a href="{{ route('admin.students.create') }}" class="btn btn-md btn-primary">Tambah Data</a>
+    <form action="{{ route('admin.students.index') }}" method="GET" class="mt-3">
+      <div class="row">
+        <div class="col">
           <div class="form-group">
             <select name="major" id="major_id" class="form-select" onchange="this.form.submit()">
               <option value="">Pilih Jurusan</option>
               @foreach ($majors as $item)
-                <option value="{{ $item->id }}" {{ request('major_id') == $item->id ? 'selected' : '' }}>
+                <option value="{{ $item->id }}" {{ request('major') == $item->id ? 'selected' : '' }}>
                   {{ $item->name }}
                 </option>
               @endforeach
             </select>
           </div>
-        </form>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <select name="year" id="year" class="form-select" onchange="this.form.submit()">
+              <option value="">Pilih Tahun Masuk</option>
+              @foreach (range(date('Y'), 2000) as $year)
+                <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
 
     @if (session()->has('success'))
     <div class="alert alert-success col-lg-10 mt-3" role="alert">

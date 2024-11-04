@@ -3,20 +3,32 @@
 @section('content')
 <div class="card">
   <div class="card-body">
-    <div class="col-6">
-      <form action="{{ route('admin.assign.create') }}" method="GET">
-        <div class="form-group">
-          <select name="major_id" id="major_id" class="form-select" onchange="this.form.submit()">
-            <option value="">Pilih Jurusan</option>
-            @foreach ($majors as $item)
-              <option value="{{ $item->id }}" {{ request('major_id') == $item->id ? 'selected' : '' }}>
-                {{ $item->name }}
-              </option>
-            @endforeach
-          </select>
+    <form action="{{ route('admin.assign.create') }}" method="GET">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <select name="major_id" id="major_id" class="form-select" onchange="this.form.submit()">
+              <option value="">Pilih Jurusan</option>
+              @foreach ($majors as $item)
+                <option value="{{ $item->id }}" {{ request('major_id') == $item->id ? 'selected' : '' }}>
+                  {{ $item->name }}
+                </option>
+              @endforeach
+            </select>
+          </div>
         </div>
-      </form>
-    </div>
+        <div class="col">
+          <div class="form-group">
+            <select name="year" id="year" class="form-select" onchange="this.form.submit()">
+              <option value="">Pilih Tahun Masuk</option>
+              @foreach (range(date('Y'), 2000) as $year)
+                <option value="{{ $year }}" {{ request('year') == $year ? 'selected' : '' }}>{{ $year }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+      </div>
+    </form>
 
     <form action="{{ route('admin.assign.store') }}" method="POST">
       @csrf
@@ -24,7 +36,9 @@
         <table class="table table-striped table-hover">
           <thead>
             <tr>
-              <th>#</th>
+              <th width="170px">
+                <input type="checkbox" class="form-check-input" id="select-all"> Pilih Semua
+              </th>
               <th>NIS</th>
               <th>Nama Siswa</th>
             </tr>
@@ -66,4 +80,12 @@
     </form>
   </div>
 </div>
+<script>
+  document.getElementById('select-all').addEventListener('click', function() {
+    const checkboxes = document.querySelectorAll('input[name="student_ids[]"]');
+    for (var checkbox of checkboxes) {
+      checkbox.checked = this.checked;
+    }
+  });
+</script>
 @endsection

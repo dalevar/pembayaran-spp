@@ -30,7 +30,7 @@ npm i
 
 ## ENV Setting
 
-rename .env.example to .env and change database setting
+rename **.env.example** to **.env** and change database setting
 
 ```
 DB_CONNECTION=mysql
@@ -44,7 +44,7 @@ DB_PASSWORD=
 ## Key Generate
 
 ```
-php artisan key:genrate
+php artisan key:generate
 ```
 
 ## Migration and Seeder Database

@@ -32,9 +32,9 @@
             <td>{{ $show->description }}</td>
             <td>
               @if ($show->status === "active")
-                <span class="badge text-bg-success">{{ $show->status }}</span>
+                <span class="badge text-bg-success">Aktif</span>
               @else
-                <span class="badge text-bg-danger">{{ $show->status }}</span>
+                <span class="badge text-bg-danger">Tidak Aktif</span>
               @endif
             </td>
             <td>
