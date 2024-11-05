@@ -18,7 +18,7 @@ class StudentController extends Controller
     {
         $title = 'Siswa';
         $majors = Major::all();
-        $students = Student::with('major')->filter($request->major)->status()->paginate(10);
+        $students = Student::with('major')->filterMajorAndYear($request->major, $request->year)->status()->paginate(10);
         return view('admin.students.index', [
             'title' => $title,
             'majors' => $majors,

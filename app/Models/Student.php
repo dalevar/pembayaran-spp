@@ -15,10 +15,11 @@ class Student extends Model
         'address',
         'gender',
         'parents',
-        'major_id'
+        'major_id',
+        'year'
     ];
 
-    public function scopeFilter($query, $majorId = "", $classId = "")
+    public function scopeFilterMajorAndClassroom($query, $majorId = "", $classId = "")
     {
         if ($classId) {
             $query->whereHas('classes', function ($query) use ($classId) {
@@ -28,6 +29,19 @@ class Student extends Model
 
         if ($majorId) {
             $query->where('major_id', $majorId);
+        }
+
+        return $query;
+    }
+
+    public function scopeFilterMajorAndYear($query, $majorId = "", $year = "")
+    {
+        if ($majorId) {
+            $query->where('major_id', $majorId);
+        }
+
+        if ($year) {
+            $query->where('year', $year);
         }
 
         return $query;

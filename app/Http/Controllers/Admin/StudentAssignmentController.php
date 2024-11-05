@@ -20,7 +20,7 @@ class StudentAssignmentController extends Controller
         $students = [];
 
         // Ambil data siswa berdasarkan kelas dan request jurusan
-        $students = Student::filter($request->major, $request->classroom)
+        $students = Student::filterMajorAndClassroom($request->major, $request->classroom)
             ->status()
             ->with('major')
             ->with('classes')->paginate(15)->withQueryString();
@@ -37,7 +37,7 @@ class StudentAssignmentController extends Controller
     {
         $title = "Tambah Riwayat Kelas";
         $majors = Major::all();
-        $students = Student::with('major')->filter($request->major_id)->status()->get();
+        $students = Student::with('major')->filterMajorAndYear($request->major_id, $request->year)->status()->get();
         $classrooms = Classroom::searchMajor($request->major_id)->get();
         $academic_years = AcademicYear::where('status', '=', 'active')->get();
 

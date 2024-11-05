@@ -44,5 +44,9 @@
       </tbody>
     </table>
   </div>
+
+  <div class="mx-3">
+    {{ $classrooms->links() }}
+  </div>
 </div>
 @endsection
