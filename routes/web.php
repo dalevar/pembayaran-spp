@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MajorController;
 use App\Http\Controllers\Admin\StudentAssignmentController;
 use App\Http\Controllers\Admin\StudentController;
+use App\Http\Controllers\Admin\StudentImportController;
+use App\Http\Controllers\Admin\TemplateExcelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +38,8 @@ Route::middleware(['auth'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('assign/create', [StudentAssignmentController::class, 'create'])->name('assign.create');
     Route::post('assign', [StudentAssignmentController::class, 'store'])->name('assign.store');
     Route::post('assign/delete', [StudentAssignmentController::class, 'delete'])->name('assign.delete');
+
+    Route::get('download/excel', [TemplateExcelController::class, 'downloadTemplate'])->name('download.excel');
+    Route::post('upload/excel', [StudentImportController::class, 'import'])->name('upload.excel');
 });
 
