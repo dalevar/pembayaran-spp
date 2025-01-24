@@ -1,42 +1,34 @@
 # How To Install
-
 clone project
 
-```
-git clone https://github.com/Borneo-Infinity-Tech/hadir-sekolah-laravel.git
-```
 
 ## Create Database
-
 use MYSQL or PostgreSQL
 
 ```sql
-CREATE DATABASE hadirsekolahdb;
+CREATE DATABASE pembayaran_spp;
 ```
 
 ## Install Composer and NPM in Project
 
 ### Composer
-
 ```
 composer i
 ```
 
 ### NPM
-
 ```
 npm i
 ```
 
 ## ENV Setting
-
 rename **.env.example** to **.env** and change database setting
 
 ```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=hadirsekolahdb
+DB_DATABASE=pembayaran_spp
 DB_USERNAME=root
 DB_PASSWORD=
 ```
